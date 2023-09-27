@@ -11,7 +11,7 @@ const NavbarContent:React.FC<NavbarContentProps> = ({navbarContent}) => {
     <div className='flex items-center justify-center'>
       {navbarContent.map((item, index) => (
             <Link href={item.href}>
-                <div key={index} className='p-4 mx-3 tracking-wide font-semibold hover:underline hover:opacity-75'>
+                <div key={index} className='p-4 md:mx-3 tracking-wide font-semibold hover:underline hover:opacity-75'>
                     <p>{item.title}</p>
                 </div>
                 </Link>

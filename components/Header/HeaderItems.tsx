@@ -31,11 +31,11 @@ const HeaderItems: React.FC<HeaderItemsProps> = ({headerData}) => {
           {item.label === 'Search' ? (
                 <div
                   className={twMerge(`
-                    flex flex-row h-auto items-center w-full text-md font-medium cursor-pointer py-1 md:flex sm:text-center
+                    flex flex-row h-auto items-center w-full text-md font-medium cursor-pointer py-1 sm:text-center
                   `)}
                 >
-                  {getIconComponent(item.icon, 25)}
-                  <p className='truncate w-full'>{item.label}</p>
+                  {getIconComponent(item.icon, 20)}
+                  {/* <p className='truncate w-full'>{item.label}</p> */}
                 </div>
               ) : (
                 <Link href={item.href}
@@ -43,9 +43,8 @@ const HeaderItems: React.FC<HeaderItemsProps> = ({headerData}) => {
                       flex flex-row h-auto items-center w-full text-md font-medium cursor-pointer py-1 md:flex sm:text-center
                     `)}
                   >
-                    {getIconComponent(item.icon, 25)}
-                    <p className='truncate w-full'>{item.label}</p>
-                    
+                    {getIconComponent(item.icon, 20)}
+                    {/* <p className='truncate w-full'>{item.label}</p> */}
                 </Link>
               )}
     </div>

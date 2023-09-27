@@ -9,7 +9,7 @@ import Navbar from '@/components/Navbar'
 const font = Figtree({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Ram Collection',
+  title: 'Ram Collections',
   description: 'Ladies and Kids Clothing',
 }
 
