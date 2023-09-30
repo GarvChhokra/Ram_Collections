@@ -33,7 +33,7 @@ const PromotionsCarousel: React.FC<PromotionsCarouselProps> = ({promotions}) => 
 
   return (
     <div className="p-1 md:flex items-center justify-center">
-      <div className="flex flex-col w-full sm:max-w-xl md:max-w-3xl md:mx-10 text-center">
+      <div className="flex flex-col w-full sm:max-w-l md:max-w-2xl md:mx-10 text-center">
             <Slider {...settings}>
             {promotions.map((item, index) => (
                 <div key={index}>

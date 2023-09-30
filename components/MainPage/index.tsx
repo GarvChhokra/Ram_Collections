@@ -4,6 +4,7 @@ import Jeans from './Jeans'
 import Information from './Information'
 import WomenClothings from './WomenClothings'
 import WomenClothingsProducts from './WomenClothingsProducts'
+import NewCollection from './NewCollection'
 
 const MainPage = () => {
   return (
@@ -11,6 +12,7 @@ const MainPage = () => {
         <Jeans/>
         <SaleOffer/>
         <WomenClothings products={WomenClothingsProducts}/>
+        <NewCollection />
         <Information/>
     </div>
   )
