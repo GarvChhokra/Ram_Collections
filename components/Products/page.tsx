@@ -1,9 +1,10 @@
 import React from 'react'
+import ProductsCard from './ProductCard'
 
 const Products = () => {
   return (
-    <div className=''>
-      
+    <div>
+      <ProductsCard/>
     </div>
   )
 }

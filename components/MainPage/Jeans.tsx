@@ -12,8 +12,8 @@ const Jeans = () => {
             alt="Women Jeans"
             className="w-60 h-40"
           />
-          <h3 className="text-lg font-semibold my-2">Women's Jeans</h3>
-          <p className="text-sm mb-2">Stylish jeans for women.</p>
+          <h3 className="text-lg font-semibold my-2">Kids's Jeans</h3>
+          <p className="text-sm mb-2">Stylish jeans for kids.</p>
           <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-300">
             Shop Now
           </button>

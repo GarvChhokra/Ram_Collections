@@ -1,17 +1,23 @@
 import Link from "next/link";
+import {IoIosArrowBack} from "react-icons/io"
 
 export default function Signup() {
     return (
       <>
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-            <Link href="/login" className="mt-5 text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500 hover:underline">Back to Sign In</Link>
+            <Link href="/login" className="flex text-sm font-semibold leading-6 text-indigo-600 hover:text-indigo-500 hover:underline">
+              <span className="mt-1 pr-1">
+            <IoIosArrowBack/>
+            </span>
+              Back to Sign In
+              </Link>
             <h2 className="text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
               Sign up
             </h2>
           </div>
   
-          <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
             <form className="space-y-6" action="#" method="POST">
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">

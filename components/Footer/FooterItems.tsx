@@ -41,7 +41,7 @@ const FooterItems: React.FC<FooterItemsProps> = ({ footeritems }) => {
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4 text-yellow-300 underline text-xl bg-red-500 p-2 w-20 text-center rounded-full inline-block animate-bounce">
-                  <Link href={"/category/Sale"} className="">
+                  <Link href={"/store/category/Sale"} className="">
                     Sale
                   </Link>
                 </li>
@@ -53,7 +53,7 @@ const FooterItems: React.FC<FooterItemsProps> = ({ footeritems }) => {
           </div>
           <div className="px-4 py-6 gray-700 md:flex md:items-center md:justify-between">
             <span className="text-sm text-gray-500 dark:text-gray-300 sm:text-center">
-              © 2023 <Link href="/">Ram Collection</Link>. All Rights Reserved.
+              © 2023 <Link href="/" className='text-indigo-600'>Ram Collections</Link>. All Rights Reserved.
             </span>
             <div className="flex mt-4 space-x-5 sm:justify-center md:mt-0">
               <Link

@@ -8,6 +8,7 @@ const CategoryPage = ({params}: {params: any}) => {
   return (
     <div>
       <h1 className='flex text-2xl tracking-wider font-semibold justify-center my-5'>{params.category}</h1>
+      <FilterSidebar/>
     </div>
   );
 };
