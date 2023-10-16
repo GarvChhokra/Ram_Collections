@@ -1,17 +1,19 @@
 "use client"
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import Swal from "sweetalert2";
 
 export default function Signup() {
+  const router = useRouter();
   const dataForm = ["Full name", "Email", "Password", "Confirm Password"];
   const [pswd, setPswd] = useState("");
   const [confpswd, setConfPswd] = useState("");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e : any) => {
     e.preventDefault();
 
     if (pswd !== confpswd) {
@@ -37,7 +39,7 @@ export default function Signup() {
       });
     } else {
       try {
-      const response = await fetch(`/api/auth/signup`, {
+      const response:any = await fetch(`/api/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -48,46 +50,24 @@ export default function Signup() {
           password: pswd,
         }),
       });
+      const data = await response.json();
 
       if (response.ok) {
-        // Registration successful, you can redirect the user or show a success message.
-        // ... (existing code)
-        console.log("Success");
+        // Registration successful
+        setEmail("");
+        setFullName("");
+        setConfPswd("");
+        setPswd("");
+        router.push("/");
+        console.log(data.message);
       } else {
         // Handle registration error
-        console.error('Registration failed');
+        console.error('Registration failed: ',data.message);
       }
     } catch (error) {
       console.error('Error:', error);
     }
   }
-      // Password and full name are valid, you can proceed with form submission or other actions.
-      // Implement your form submission logic here.
-      // For example, you can send the data to your server.
-      // const formData = {
-      //   fullName,
-      //   email,
-      //   password: pswd,
-      // };
-
-      // // Example of how to send the data to a server using fetch:
-      // fetch("/api/auth/signup", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(formData),
-      // })
-      //   .then((response) => response.json())
-      //   .then((data) => {
-      //     // Handle the response from the server.
-      //     // You can display a success message or handle errors here.
-      //     console.log(data);
-      //   })
-      //   .catch((error) => {
-      //     console.error("Error:", error);
-      //   });
-    // }
   };
 
   return (
