@@ -17,7 +17,6 @@ interface HeaderItemsProps {
 const iconComponents: { [key: string]: React.ComponentType<IconBaseProps> } = {
   BiSearch,
   CgProfile,
-  GrFavorite,
   PiShoppingCart,
 };
 
