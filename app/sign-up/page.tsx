@@ -59,7 +59,6 @@ export default function Signup() {
         setConfPswd("");
         setPswd("");
         router.push("/");
-        console.log(data.message);
       } else {
         // Handle registration error
         console.error('Registration failed: ',data.message);

@@ -9,21 +9,18 @@ export default function ProductOverview({ productId }: { productId: any; }) {
   // const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   // const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
   const { products, fetchProducts } = useProductStore();
-  const { productsCart, addProduct } = useCartStore();
+  const { productsCart, addProduct, increaseQuantity } = useCartStore();
   if (products.length == 0) {
     fetchProducts();
   }
-  console.log(products);
-  console.log("Product Details", productId);
   // find product from products where product_id: productId
   const product = products.filter((p) => p.data.product_id === productId);
-  console.log(product);
+  console.log("product", product);
   // Add to cart functionality
   const handleCart = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    // TODO: Add to cart functionality here
-    addProduct(product);
-    console.log(products);
+    // TODO: Add to cart functionality heres
+    // {productsCart.map((itm)=> itm.product.product_id === product.product_id ? increaseQuantity(itm.product): addProduct(itm.product))}
   };
 
   return (

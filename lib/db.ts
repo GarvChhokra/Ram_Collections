@@ -18,7 +18,6 @@ class QueryBuilder {
       return rows as any[];
     } catch (error) {
       // Handle the error
-      console.log(error);
       return [];
     } finally {
       // Always release the connection back to the pool

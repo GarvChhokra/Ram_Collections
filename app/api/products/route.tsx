@@ -2,7 +2,7 @@ import { getDbConnection } from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function GET(req: NextResponse) {
-  console.log("Products API triggered");
+  console.log("Products API");
   const db = await getDbConnection();
 
   try {
@@ -22,7 +22,6 @@ export async function GET(req: NextResponse) {
       }
     );
   } catch (error) {
-    console.log("Error");
     return new NextResponse(
       JSON.stringify({
         status: "error",

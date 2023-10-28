@@ -34,9 +34,7 @@ const ModalSignUp = () => {
               text: data.message,
             });
           }
-        } catch (error) {
-          console.log(error);
-        }
+        } catch (error) {}
       }
     });
   };

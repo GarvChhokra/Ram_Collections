@@ -4,7 +4,6 @@ import { useEffect } from "react";
 
 export default async function ProductsCard() {
   const currentURL = window.location.href;
-  console.log(currentURL);
   const category = currentURL.substring(
     currentURL.lastIndexOf("/") + 1,
     currentURL.length
@@ -14,7 +13,6 @@ export default async function ProductsCard() {
   if (products.length == 0) {
     await fetchProducts();
   }
-  console.log("Products", products);
 
   return (
     <div className="bg-white">

@@ -23,13 +23,10 @@ export default function Login() {
       const data = await response.json();
       if (response.ok) {
         //
-        console.log(data.message);
       } else {
-        console.log("Authentication failed", data.message);
       }
     } catch (error) {
       // Handle any errors
-      console.log("Error", error);
     }
   };
   return (

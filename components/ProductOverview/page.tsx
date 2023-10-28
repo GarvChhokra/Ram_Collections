@@ -10,29 +10,36 @@ function classNames(...classes: string[]) {
 
 export default function ProductOverview({ productId }: any) {
   const { products, fetchProducts } = useProductStore();
-  const { productsCart, addProduct } = useCartStore();
-  console.log("products", products);
+  const { productsCart, addProduct, increaseQuantity } = useCartStore();
+  const productNew: any = useMemo(() => {
+    let newProd;
+    if (products && products.data) {
+      products.data.forEach((element: any) => {
+        if (element.product_id == productId) {
+          newProd = element;
+        }
+      });
+    }
+    return newProd;
+  }, [products, productId]);
+
   // handleCart
   const handleCart = (e: any) => {
     e.preventDefault();
-    if (!productsCart?.includes(productNew)) {
-      addProduct(productNew);
+    if (productsCart.length != 0) {
+      productsCart.map((itm) => {
+        console.log("IRM:", itm);
+
+        if (itm.product.product_id == productId) {
+          increaseQuantity(itm);
+        } else {
+          addProduct(productNew);
+        }
+      });
     } else {
-      alert("Item already added to cart");
+      addProduct(productNew);
     }
   };
-  console.log("Cart", productsCart);
-  console.log("ProductI d", productId);
-  const productNew = useMemo(() => {
-    let newProd;
-    products.data.forEach((element: any) => {
-      if (element.product_id == productId) {
-        newProd = element;
-      }
-    });
-    return newProd;
-  }, [products, productId]);
-  console.log("product New", productNew);
 
   return (
     <div className="bg-white">

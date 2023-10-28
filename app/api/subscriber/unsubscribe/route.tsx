@@ -2,7 +2,6 @@ import { getDbConnection } from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function POST(req: NextResponse) {
-  console.log("unsubscriber API triggered");
   const { email }: any = await req.json();
   const db = await getDbConnection();
   try {
@@ -12,7 +11,6 @@ export async function POST(req: NextResponse) {
     const result: any = await db.executeQuery(sql, [email]);
     db.close();
 
-    console.log(result);
     if (result?.affectedRows > 0) {
       return new NextResponse(
         JSON.stringify({

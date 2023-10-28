@@ -3,9 +3,11 @@ import { persist } from "zustand/middleware";
 
 // Define the type for the cart store
 type CartStore = {
-  productsCart: any[]; // Adjust the type to match your product data structure
+  productsCart: { product: any; quantity: number }[]; // Adjust the type to match your product data structure
   addProduct: (product: any) => void;
   removeProduct: (product: any) => void;
+  increaseQuantity: (product: any) => void;
+  decreaseQuantity: (product: any) => void;
 };
 
 export const useCartStore = create(
@@ -14,14 +16,32 @@ export const useCartStore = create(
       productsCart: [],
       addProduct: (product) => {
         set((state) => ({
-          productsCart: [product, ...state.productsCart],
+          productsCart: [{ product, quantity: 1 }, ...state.productsCart],
         }));
       },
       removeProduct: (product) => {
-        console.log("Remove", product);
         set((state) => ({
           productsCart: state.productsCart.filter(
-            (products) => products.product_id !== product.product_id
+            (products) => products.product.product_id !== product.product.product_id
+          ),
+        }));
+      },
+      increaseQuantity: (product) => {
+        console.log("p:",product);
+        set((state) => ({
+          productsCart: state.productsCart.map((item) =>
+            item.product.product_id === product.product.product_id
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          ),
+        }));
+      },
+      decreaseQuantity: (product) => {
+        set((state) => ({
+          productsCart: state.productsCart.map((item) =>
+            item.product.product_id === product.product.product_id && item.quantity > 1
+              ? { ...item, quantity: item.quantity - 1 }
+              : item
           ),
         }));
       },

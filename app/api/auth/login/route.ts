@@ -5,7 +5,6 @@ import { serialize } from "cookie";
 import jwt from "jsonwebtoken";
 
 export async function POST(req: NextRequest) {
-  console.log("Login API triggered");
   const db = await getDbConnection();
   const { email, password }: any = await req.json();
   if (!email || !password) {
@@ -30,8 +29,6 @@ export async function POST(req: NextRequest) {
         path: "/", // Adjust the path attribute as needed for your application
       });
       // Password is correct
-      console.log(result);
-      console.log("Success");
       return new NextResponse(
         JSON.stringify({
           status: "success",
@@ -46,7 +43,6 @@ export async function POST(req: NextRequest) {
         }
       );
     } else {
-      console.log("Password is wrong");
       return new NextResponse(
         JSON.stringify({
           status: "failure",
@@ -60,7 +56,6 @@ export async function POST(req: NextRequest) {
     }
     db.close();
   } catch (error) {
-    console.log(error);
     db.close();
     return new NextResponse(
       JSON.stringify({ status: "error", message: "Authentication failed" }),

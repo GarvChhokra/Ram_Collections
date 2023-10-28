@@ -6,12 +6,27 @@ import { useCartStore } from "@/store/cart";
 import Link from "next/link";
 
 const Cart = () => {
-  const { productsCart, removeProduct } = useCartStore();
-  console.log(productsCart);
+  const { productsCart, removeProduct, increaseQuantity, decreaseQuantity } =
+    useCartStore();
   const handleRemoveProduct = (product: any) => {
-    console.log("Id clicked", product);
     removeProduct(product);
   };
+  const handleQuantityIncrease = (product: any) => {
+    console.log("Increase");
+    console.log("Product", product);
+    increaseQuantity(product);
+    console.log("Cart", productsCart);
+  };
+  const handleQuantityDecrease = (product: any) => {
+    console.log("Decrease");
+    if (product.quantity === 1) {
+      removeProduct(product);
+    } else {
+      decreaseQuantity(product);
+    }
+    console.log("Cart", productsCart);
+  };
+  console.log("Cart", productsCart);
   return (
     <div className="container w-3/4 mx-auto my-10">
       <div className="px-10 py-10">
@@ -53,48 +68,57 @@ const Cart = () => {
                 <div className="w-20">
                   <img
                     className="h-24"
-                    src={product.image}
-                    alt={product.title}
+                    src={product.product.image}
+                    alt={product.product.title}
                   />
                 </div>
                 <div className="flex flex-col justify-between ml-4 flex-grow">
-                  <span className="font-bold text-sm">{product.title}</span>
+                  <span className="font-bold text-sm">
+                    {product.product.title}
+                  </span>
                   <span className="font-thin text-sm">
-                    {product.category_name}
+                    {product.product.category_name}
                   </span>
                   <span className="text-red-500 text-xs">
-                    {product.description}
+                    {product.product.description}
                   </span>
                 </div>
               </div>
               <div className="flex justify-center w-1/5">
-                <div className="mt-1">
-                  <AiOutlineMinus />
-                </div>
+                <button onClick={() => handleQuantityDecrease(product)}>
+                  <div className="mt-1">
+                    <AiOutlineMinus />
+                  </div>
+                </button>
                 <input
                   className="mx-2 border text-center w-8"
                   type="text"
+                  value={product.quantity}
                   defaultValue={1}
                 />
-                <div className="mt-1">
-                  <AiOutlinePlus />
-                </div>
+                <button onClick={() => handleQuantityIncrease(product)}>
+                  <div className="mt-1">
+                    <AiOutlinePlus />
+                  </div>
+                </button>
               </div>
               <span className="text-center w-1/5 font-semibold text-sm">
-                {product.discount ? (
+                {product.product.discount ? (
                   <>
-                    <span className="line-through">${product.price}</span>
+                    <span className="line-through">
+                      ${product.product.price}
+                    </span>
                     <span className="ml-2 text-red-500">
                       $
                       {(
-                        product.price -
-                        product.discount * product.price
+                        product.product.price -
+                        product.product.discount * product.product.price
                       ).toFixed(2)}
                     </span>
                   </>
                 ) : (
                   <p className="text-3xl tracking-tight text-gray-900">
-                    ${product.price}
+                    ${product.product.price}
                   </p>
                 )}
               </span>

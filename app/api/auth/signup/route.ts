@@ -5,7 +5,6 @@ import jwt from "jsonwebtoken";
 import { parse, serialize } from "cookie";
 
 export async function POST(req: NextRequest) {
-  console.log("POST request");
   const db = await getDbConnection();
   const saltRounds = 14;
   const { name, email, password }: any = await req.json();
@@ -18,11 +17,7 @@ export async function POST(req: NextRequest) {
       }
     );
   }
-
-  console.log("Before hashing");
   const hashPswd = await bcrypt.hash(password, saltRounds);
-  console.log("After hashing");
-  console.log(hashPswd);
   try {
     const sql =
       "INSERT INTO users (username, email, password, RegistrationDate) VALUES (?, ?, ?, CURRENT_TIMESTAMP)";
@@ -38,7 +33,6 @@ export async function POST(req: NextRequest) {
       path: "/", // Adjust the path attribute as needed for your application
     });
     if (rows?.affectedRows > 0) {
-      console.log("Registration successful");
       return new NextResponse(
         JSON.stringify({
           status: "success",
@@ -60,7 +54,6 @@ export async function POST(req: NextRequest) {
       );
     }
   } catch (e: any) {
-    console.log(e);
     db.close();
 
     return new NextResponse(

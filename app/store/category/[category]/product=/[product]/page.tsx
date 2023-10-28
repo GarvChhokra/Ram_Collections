@@ -6,8 +6,6 @@ import React from "react";
 const ProductDescription = ({ params }: { params: any }) => {
   const searchParams = useSearchParams();
   const productId = searchParams.get("productId");
-  console.log("ProductId", productId);
-  console.log("Params", params);
   const decodedProductName = params.product
     ? decodeURIComponent(params.product)
     : "";

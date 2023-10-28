@@ -26,7 +26,6 @@ const HeaderItems: React.FC<HeaderItemsProps> = ({headerData}) => {
   const handleClick = (label: string) => {
     if(label === 'Search'){
       isSearchBtn(!searchBtn);
-      console.log(searchBtn)
     }
   }
   const handleCloseSearchSideOver = () => {
