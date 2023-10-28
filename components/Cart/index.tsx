@@ -79,7 +79,7 @@ const Cart = () => {
                   <span className="font-thin text-sm">
                     {product.product.category_name}
                   </span>
-                  <span className="text-red-500 text-xs">
+                  <span className="text-blue-500 text-xs">
                     {product.product.description}
                   </span>
                 </div>
