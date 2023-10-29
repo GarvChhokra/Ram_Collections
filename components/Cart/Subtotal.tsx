@@ -23,7 +23,7 @@ const Subtotal = () => {
 
   return (
     <div>
-      <h1>Subtotal</h1>
+      <h1>Total</h1>
       <hr></hr>
       <div className="container w-3/4 mx-auto my-10">
         <div className="flex mt-10 mb-5">
@@ -56,8 +56,8 @@ const Subtotal = () => {
               {(totalPrice - discountTotal).toFixed(2)}
             </p>
           </span>
-          <span className="text-center w-1/5 font-semibold text-sm">
-            <button className="bg-blue-500 text-white rounded-md p-2">
+          <span className="text-center w-1/5 font-semibold text-xl">
+            <button className="bg-blue-500 p-2 text-white rounded-full p-2">
               Checkout
             </button>
           </span>

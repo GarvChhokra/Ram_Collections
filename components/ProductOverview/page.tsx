@@ -26,18 +26,23 @@ export default function ProductOverview({ productId }: any) {
   // handleCart
   const handleCart = (e: any) => {
     e.preventDefault();
-    if (productsCart.length != 0) {
+    if (productsCart.length > 0) {
+      let foundItm = false;
+      let itmDetails;
       productsCart.map((itm) => {
-        console.log("IRM:", itm);
-
         if (itm.product.product_id == productId) {
-          increaseQuantity(itm);
-        } else {
-          addProduct(productNew);
+          foundItm = true;
+          itmDetails = itm;
         }
       });
-    } else {
+      if (foundItm) {
+        increaseQuantity(itmDetails);
+      } else {
+        addProduct(productNew);
+      }
+    } else if (productsCart.length === 0) {
       addProduct(productNew);
+    } else {
     }
   };
 
