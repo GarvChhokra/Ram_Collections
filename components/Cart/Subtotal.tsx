@@ -1,7 +1,9 @@
 import useCartStore from "@/store/cart";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 const Subtotal = () => {
+  const router = useRouter();
   const { productsCart } = useCartStore();
   console.log(productsCart);
   const totalPrice = productsCart
@@ -19,7 +21,9 @@ const Subtotal = () => {
     }, 0)
     .toFixed(2);
 
-  console.log("Discount", discountTotal);
+  const handleCheckout = () => {
+    router.push("/checkout");
+  };
 
   return (
     <div>
@@ -57,7 +61,10 @@ const Subtotal = () => {
             </p>
           </span>
           <span className="text-center w-1/5 font-semibold text-xl">
-            <button className="bg-blue-500 p-2 text-white rounded-full p-2">
+            <button
+              className="bg-blue-500 p-2 text-white rounded-full p-2"
+              onClick={() => handleCheckout()}
+            >
               Checkout
             </button>
           </span>
