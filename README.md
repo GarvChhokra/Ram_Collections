@@ -52,7 +52,7 @@ Welcome to KidCloth, your one-stop destination for trendy and quality clothing f
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/kidcloth-ecommerce.git
+   git clone [https://github.com/GarvChhokra/Ram_Collections.git](https://github.com/GarvChhokra/Ram_Collections.git)
 
 
 ## Getting Started
